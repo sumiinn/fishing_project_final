@@ -258,7 +258,7 @@ public class OrderController {
   }
 
   model.addAttribute("message", "결제되었습니다.");
-  return "redirect:/";
+  return "redirect:/myPage/reservation";
 }
 
   

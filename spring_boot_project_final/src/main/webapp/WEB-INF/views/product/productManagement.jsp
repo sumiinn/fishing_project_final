@@ -88,8 +88,8 @@
                         <c:forEach var="order" items="${orderHistory}">
                             <tr>
                                 <td>${order.ordNo}</td>
-                                <td><fmt:parseDate value="${order.ordDate}" pattern="yyyy-MM-dd HH:mm:ss" var="parsedDate"/>
-                    								<fmt:formatDate value="${parsedDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+                                <td><fmt:parseDate value="${order.ordDate}" pattern="yyyy-MM-dd HH:mm" var="parsedDate"/>
+                    								<fmt:formatDate value="${parsedDate}" pattern="yyyy-MM-dd HH:mm" /></td>
                                 <td>${order.prdNo}</td>
                                 <td>${order.ordQty}</td>
                                 <td>${order.ordRcvReceiver}</td>

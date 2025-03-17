@@ -21,10 +21,7 @@
 				<div class="eventWrap">
 					<div id="eventCtgBox">
 						<ul id="eventCtgList" class="eventCtgBar">
-							<li data-tab="/event/myFish" class="eventCtg1 eventCtg active" >크기 겨루기</li>
-							<li data-tab="/event/business" class="eventCtg2 eventCtg" >선주 주최</li>
-							<li data-tab="/event/site" class="eventCtg3 eventCtg" >사이트 주최</li>
-							<li data-tab="/event/review" class="eventCtg4 eventCtg" >리뷰 이벤트</li>
+							<li data-tab="/event/myFish" class="eventCtg1 eventCtg active" >회원 낚시갤러리 크기 겨루기</li>
 						</ul>
 					</div>
 					<div id="eventMainBox">

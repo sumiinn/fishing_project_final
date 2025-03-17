@@ -280,7 +280,7 @@
 	            htmlAddresses.push(address + '\n');
 	        }
 			
-			$('.item1').html('<span style="color:white;">' + htmlAddresses[3] + '</span>');
+			$('.item1').html('<span style="font-weight:bold;">' + htmlAddresses[3] + '소테츠 스프라지르 어저구 호텔</span>');
 
 	    });
 	}

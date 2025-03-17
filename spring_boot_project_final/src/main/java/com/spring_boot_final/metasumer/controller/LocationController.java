@@ -57,10 +57,4 @@ public class LocationController {
 	public String nationwideLocation() {
 		return "locInfo/nationwideLocationView";
 	} 
-	
-	// 해외 낚시터
-	@RequestMapping("/location/intl")
-	public String internationalLocation() {
-		return "locInfo/intlLocationView";
-	}
 }

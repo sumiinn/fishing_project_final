@@ -83,14 +83,9 @@ public class WeatherService {
     		
     		if (matcher.find()) {
     			String matchResult = matcher.group(2).trim();
-				/*
-				 * if ( (matchResult.length() == 2) && (matchResult.charAt(0) == 0) ) {
-				 * matchResult = matchResult.charAt(1) + ""; }
-				 */
     			dateMap.put(searchList[i], matchResult); // 정규식에서 두 번째 괄호의 값을 가져옴
     		}
     	}
-    	//System.out.println(dateMap);
     	return dateMap;
     }
 

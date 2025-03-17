@@ -34,7 +34,7 @@
 					<!-- https://sliderui.com/dashboard/sliders/kqsirv -->
 				</div> <!-- eventAdBox 종료 : 1. 추천 광고, 이벤트 베너 (슬라이드쇼) -->
 				
-				<div id="hotKeywordBox" class="indexSection">
+				<!--  <div id="hotKeywordBox" class="indexSection">
 					<div class="sectionTitle">실시간 HOT 키워드/검색어 🔥</div>
 					<div class="keywordListWrap"> 
 						<div id="youtubeKeyword" class="keywordListItem">
@@ -85,7 +85,7 @@
 							</div>
 						</div>
 					</div>
-				</div> <!-- hotKeywordBox 종료 : 2. 실시간 HOT 키워드 -->
+				</div>--> <!-- hotKeywordBox 종료 : 2. 실시간 HOT 키워드 -->
 				
 				<div id="nowFishingBox" class="indexSection">
 					<div class="sectionTitle">실시간 낚시 조황 정보 🗺️</div>
@@ -134,7 +134,7 @@
 				   </div>
 				   <div class="tag_prev" onclick="tag_moveSlide(-1)">&#10094;</div>
 				   <div class="tag_next" onclick="tag_moveSlide(1)">&#10095;</div>
-				</div>
+				</div><br><br><br>
 				
 				
 				<div id="fishRecordRankBox" class="indexSection fishRecordSeries">

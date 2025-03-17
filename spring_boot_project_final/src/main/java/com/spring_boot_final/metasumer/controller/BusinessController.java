@@ -25,7 +25,6 @@ import com.spring_boot_final.metasumer.service.FishingSpotService;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/business")
 public class BusinessController {
   @Autowired
   private BusinessService businessService;
