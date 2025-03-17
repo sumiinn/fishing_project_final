@@ -75,7 +75,8 @@ public class FishController {
         
         ArrayList<FishVO> fishList = fishService.fishSearch(map);
         
-        if (fishList.isEmpty()) { // 검색 결과 없을 때
+        // 검색 결과 없을 때
+        if (fishList.isEmpty()) { 
             return ResponseEntity.noContent().build();
         } else {
             return ResponseEntity.ok(fishList);
