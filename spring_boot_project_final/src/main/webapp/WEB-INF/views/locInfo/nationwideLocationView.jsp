@@ -29,7 +29,6 @@
 							<li data-tab="/location/nearHotel" class="locCtg5 locCtg" >주변 숙박시설</li>
 							<li data-tab="/location/traffic" class="locCtg6 locCtg" >교통 상황</li>
 							<li data-tab="/location/nationwide" class="locCtg7 locCtg active" >전국 낚시터</li>
-							<li data-tab="/location/intl" class="locCtg8 locCtg" >해외 낚시터</li>	
 						</ul>
 					</div>
 					<div class="mapBox">

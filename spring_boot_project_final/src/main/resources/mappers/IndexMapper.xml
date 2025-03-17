@@ -48,7 +48,7 @@
 	
 	<select id="tagBannerList" resultType="com.spring_boot_final.metasumer.model.InterestTagVO">
 	    SELECT i.interestId, i.tagImage, COUNT(m.memId) AS memberCount
-	    FROM memberInterest m
+	    FROM memberinterest m
 	    JOIN interesttag t ON m.tagId = t.tagId
 	    JOIN interestcategory i ON t.interestId = i.interestId
 	    WHERE m.memId = #{memId}

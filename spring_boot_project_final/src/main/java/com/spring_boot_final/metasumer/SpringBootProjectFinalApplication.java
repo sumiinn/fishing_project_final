@@ -14,9 +14,9 @@ import org.springframework.context.annotation.PropertySources;
 @ComponentScan(basePackages = {"com.spring_boot_final.metasumer"})
 @MapperScan(basePackages = {"com.spring_boot_final.metasumer"})
 @PropertySources({ //DB 연결 정보 및 각 API 키 값 : 프로퍼티 사용 (로컬 경로 / 서버 경로)
-	@PropertySource(value={"file:c:/springWorkspace/configure.properties",
-											"file:/usr/local/project/properties/configure.properties", },
-							    ignoreResourceNotFound=true)
+		@PropertySource(value = {"file:c:/springWorkspace/configure.properties",
+												  "file:/usr/local/project/properties/configure.properties"},
+								    ignoreResourceNotFound=true)
 })
 public class SpringBootProjectFinalApplication {
 

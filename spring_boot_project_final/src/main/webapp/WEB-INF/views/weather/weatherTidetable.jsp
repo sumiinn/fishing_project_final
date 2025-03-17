@@ -25,8 +25,10 @@
 							<li data-tab="/weather/current" class="weatherCtg2 weatherCtg" >현재 위치 날씨</li>
 							<li data-tab="/weather/warning" class="weatherCtg3 weatherCtg" >기상 특보</li>
 							<li data-tab="/weather/nationwide" class="weatherCtg4 weatherCtg" >전국 날씨</li>
-							<li data-tab="/weather/overseas" class="weatherCtg5 weatherCtg" >해외 날씨</li>
-							<li data-tab="/weather/factor" class="weatherCtg6 weatherCtg" >바다 낚시 지수</li>
+							<li data-tab="/weather/tidetable" class="weatherCtg4 weatherCtg" >
+								<a href="https://www.khoa.go.kr/swtc/main.do" target='_blank'>해상 날씨</a></li>
+							<li data-tab="/weather/tidetable" class="weatherCtg5 weatherCtg" >
+								<a href="https://www.weather.go.kr/w/ocean/forecast/daily-forecast.do" target='_blank'>바다 낚시 지수</a></li>
 						</ul>
 					</div>
 					<div id="weatherMainBox">

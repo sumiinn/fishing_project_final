@@ -6,7 +6,7 @@
   <mapper namespace="com.spring_boot_final.metasumer.dao.IFishingSpotAreaDAO">
     <!-- 낚시터 구역 정보 조회 -->
     <select id="getFishingSpotAreasBySpotId" parameterType="int" resultType="com.spring_boot_final.metasumer.model.FishingSpotAreaVO">
-        SELECT * FROM FishingSpotArea
+        SELECT * FROM fishingSpotArea
         WHERE spotId = #{spotId}
     </select>
     

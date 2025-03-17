@@ -59,22 +59,4 @@ public class WeatherController {
 		return "weather/weatherTidetable";
 	}
 	
-	// 전국 날씨 페이지
-	@RequestMapping("/weather/nationwide") 
-	public String nationwideWeatherView() {
-		return "weather/weatherNation";
-	}
-	
-	// 해외 날씨 페이지
-	@RequestMapping("/weather/overseas") 
-	public String worldwideWeatherView() {
-		return "weather/weatherWorld";
-	}
-	
-	// 낚시 지수 페이지
-	@RequestMapping("/weather/factor") 
-	public String weatherFactorView() {
-		return "weather/weatherFactor";
-	}
-	
 }
