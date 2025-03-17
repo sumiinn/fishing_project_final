@@ -11,7 +11,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -28,7 +29,7 @@ public class MyPageController {
 	@Autowired
 	MyPageService myPageService;
 	
-	@RequestMapping("/member/myPage")	
+	@GetMapping("/member/myPage")	
 	public String fishInfo(HttpServletRequest request, 
 			               @RequestParam(defaultValue = "1") int page,
 			               Model model) {	
@@ -67,7 +68,7 @@ public class MyPageController {
 
 	}
 	
-	@RequestMapping("/member/myPageCountData")
+	@GetMapping("/member/myPageCountData")
 	@ResponseBody
 	public Map<String, Object> getPageData(HttpServletRequest request,
 			                               @RequestParam(defaultValue = "1") int page) {
@@ -106,7 +107,7 @@ public class MyPageController {
 	    return data;
 	}
 
-	@RequestMapping("/member/myPageData")
+	@GetMapping("/member/myPageData")
 	@ResponseBody
 	public Map<String, Object> getFishData(HttpServletRequest request) {    
 	    // 물고기 기록 list 가져오기
@@ -163,12 +164,12 @@ public class MyPageController {
 	    return data;
 	}
 	
-	@RequestMapping("/myPage/myFishingSuccess")
+	@GetMapping("/myPage/myFishingSuccess")
 	public String fishingSuccess() {
 		return "myPage/myFishingSuccess";
 	}
 	
-	@RequestMapping("/myPage/successCalc")
+	@PostMapping("/myPage/successCalc")
     @ResponseBody
     public double calculateSuccessRate(@RequestParam("fishName") String fishName,
                                        @RequestParam("tide") String tide,
@@ -195,8 +196,8 @@ public class MyPageController {
     }
 	
 	
-	// 회원 정보 수정
-	@RequestMapping("/myPage/myInfo")
+	// 회원 정보 조회
+	@GetMapping("/myPage/myInfo")
 	public String myInfo(Model model, HttpSession session) {
 		String memId = (String) session.getAttribute("sid");
 
@@ -209,8 +210,8 @@ public class MyPageController {
 		return "myPage/memberInfoForm";
 	}
 		
-	// 회원 정보 수정
-	@RequestMapping("/myPage/checkPwdForm")
+	// 비밀 번호 확인 폼
+	@GetMapping("/myPage/checkPwdForm")
 	public String checkPassword(Model model,
                                 HttpSession session) {
         String memId = (String)session.getAttribute("sid");	          		
@@ -223,9 +224,10 @@ public class MyPageController {
 				
 		return "myPage/checkPwdForm";
 	}
-	
+		
+	// 비밀번호 확인
+	@PostMapping("/myPage/checkPwd")
 	@ResponseBody
-	@RequestMapping("/myPage/checkPwd")
 	public String loginCheck(@RequestParam HashMap<String, Object> param,
 							 HttpSession session) {
 		String result = myPageService.passwordCheck(param);
@@ -233,7 +235,8 @@ public class MyPageController {
 		return result;
 	}
 	
-	@RequestMapping("/myPage/updateMemberForm")
+	// 회원 정보 수정 폼
+	@GetMapping("/myPage/updateMemberForm")
 	public String updateMember(Model model,
                                HttpSession session) {
         String memId = (String)session.getAttribute("sid");	          		
@@ -251,9 +254,9 @@ public class MyPageController {
 		return "myPage/updateMemberForm";
 	}
 	
-	// 회원정보 수정
+	// 회원정보 수정	
+	@PostMapping("/myPage/updateComplete")
 	@ResponseBody
-	@RequestMapping("/myPage/updateComplete")
 	public String updateComplete(@RequestParam HashMap<String, Object> param,
                                  HttpSession session) {
 		String memId = (String)session.getAttribute("sid");
@@ -271,14 +274,14 @@ public class MyPageController {
 	    return result;
 	}
 	
-	// 회원정보 수정 완료
-	@RequestMapping("/myPage/updateCompleteForm")
+	// 회원정보 수정 완료 폼
+	@GetMapping("/myPage/updateCompleteForm")
 	public String updateCompleteForm() {		
 		return "myPage/updateCompleteForm";
 	}
 	
 	// 비밀번호 변경 폼
-	@RequestMapping("/myPage/changePwdForm")
+	@GetMapping("/myPage/changePwdForm")
 	public String changePwdForm(Model model,
                                HttpSession session) {		
         String memId = (String)session.getAttribute("sid");	          		
@@ -293,8 +296,8 @@ public class MyPageController {
 	}
 	
 	// 회원정보 수정
+	@PostMapping("/myPage/changePwdComplete")
 	@ResponseBody
-	@RequestMapping("/myPage/changePwdComplete")
 	public String changePwdComplete(@RequestParam HashMap<String, Object> param, HttpSession session) {
 		String memId = (String) session.getAttribute("sid");
 		param.put("memId", memId);
@@ -312,7 +315,7 @@ public class MyPageController {
 	}
 	
 	// 나의 예약	
-	@RequestMapping("/myPage/reservation")
+	@GetMapping("/myPage/reservation")
 	public String reservation(String period, Model model, HttpSession session) {	
         String memId = (String)session.getAttribute("sid");	   
         
@@ -353,7 +356,7 @@ public class MyPageController {
 	} 
 	
 	// 나의 이벤트
-	@RequestMapping("/myPage/event")
+	@GetMapping("/myPage/event")
 	public String event(Model model, HttpSession session) {
 		String memId = (String) session.getAttribute("sid");
 

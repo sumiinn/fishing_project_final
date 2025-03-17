@@ -110,7 +110,7 @@
 
          // 서버로 전송
          $.ajax({
-             type: "post",
+             type: "POST",
              url: "/myPage/updateCart",
              data: {
                  "cartNo[]": cartNos,
@@ -194,7 +194,7 @@
  				
  			  // 서버로 전송
  		  	  $.ajax({
- 				  type:"post",
+ 				  type:"DELETE",
 				  url:"/myPage/deleteCart", 
 			 	  data : {"chkbox":checkArr}, /* 컨트롤러에서 받는 이름 chkbox  */
 			 	  dataType:'text', 
@@ -221,7 +221,7 @@
         
         if(confirm("이 상품을 장바구니에서 삭제하시겠습니까?")) {
             $.ajax({
-                type: 'post',
+                type: 'DELETE',
                 url: '/myPage/cartDelete',  // 상품 삭제를 처리할 URL
                 data: {cartNo: cartNo},
                 success: function(result) {

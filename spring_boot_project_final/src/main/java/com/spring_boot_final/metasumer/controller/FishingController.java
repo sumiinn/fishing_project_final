@@ -6,8 +6,8 @@ import java.util.Iterator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spring_boot_final.metasumer.model.FishingDetailVO;
 import com.spring_boot_final.metasumer.model.FishingVO;
@@ -40,7 +40,7 @@ public class FishingController {
 	*/
 		
 	// 메인-서브 카테고리
-    @RequestMapping("/fishing/fishingCtgList/{fishingCtgId}/{fishingDetailCtgId}")
+    @GetMapping("/fishing/fishingCtgList/{fishingCtgId}/{fishingDetailCtgId}")
     public String fishingDetailCtgList(@PathVariable String fishingCtgId,
                                        @PathVariable String fishingDetailCtgId, 
                                        Model model) {

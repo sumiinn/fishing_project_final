@@ -9,7 +9,9 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -27,7 +29,7 @@ public class CartController {
 	CartService cartService;
 	
 	// 장바구니 목록 보기 
-	@RequestMapping("/product/cartList")
+	@GetMapping("/product/cartList")
 	public String cartList(Model model, HttpSession session) {
 		// 회원에 해당하는 cartList 출력
 		String memId = (String)session.getAttribute("sid");
@@ -47,9 +49,9 @@ public class CartController {
 		return "myPage/cartListView";
 	}
 	
-	// 장바구니에 상품 추가
+	// 장바구니에 상품 추가	
+	@PostMapping("/myPage/insertCart")
 	@ResponseBody
-	@RequestMapping("/myPage/insertCart")
 	public int insertCart(@RequestParam String prdNo, @RequestParam int cartQty, HttpSession session) {
 		// 로그인 성공 시
 		String memId = (String) session.getAttribute("sid");
@@ -75,8 +77,8 @@ public class CartController {
 	}
 	
 	// 장바구니 수량 변경
+	@PostMapping("/myPage/updateCart")
 	@ResponseBody
-	@RequestMapping("/myPage/updateCart")
 	public int updateCart(@RequestParam int[] cartNo,
                           @RequestParam int[] cartQty) {
 		int result = 0;
@@ -94,8 +96,8 @@ public class CartController {
 	}
 	
 	// 장바구니에서 상품 삭제
+	@DeleteMapping("/myPage/deleteCart")
 	@ResponseBody
-	@RequestMapping("/myPage/deleteCart")
 	public int deleteCart(@RequestParam("chkbox[]") ArrayList<String> chkArr) {
 		int result = 0;
 
@@ -109,7 +111,7 @@ public class CartController {
 	}
 	
 	// 주문서 열기
-	@RequestMapping("/myPage/orderForm")
+	@PostMapping("/myPage/orderForm")
 	public String orderForm(@RequestParam("cartNo[]") ArrayList<Integer> cartNo, @RequestParam("cartQty[]") ArrayList<Integer> cartQty, 
 			                Model model, HttpSession session) {
 		String memId = (String) session.getAttribute("sid");
@@ -134,7 +136,7 @@ public class CartController {
 	}
 
 	// 주문완료
-	@RequestMapping("/myPage/orderComplete")
+	@PostMapping("/myPage/orderComplete")
 	public String orderComplete(OrderInfoVO ordInfoVo, @RequestParam String hp1, 
 			                    @RequestParam String hp2, @RequestParam String hp3, 
 			                    @RequestParam(value = "cartNos") ArrayList<Integer> cartNos, Model model) {
@@ -175,49 +177,8 @@ public class CartController {
 		return "myPage/orderCompleteView";
 	}
 	
-//	@RequestMapping("/order/productCompletes")
-//	  public String orderCompletes(OrderVO ordVo, @RequestParam String hp1, 
-//	                              @RequestParam String hp2, @RequestParam String hp3, 
-//	                              @RequestParam int quantity,
-//	                              Model model) {
-//			// 전화번호
-//			String hp = hp1 + "-" + hp2 + "-" + hp3;
-//			ordVo.setOrdRcvPhone(hp);
-//
-//			// 주문번호
-//			long timeNum = System.currentTimeMillis();
-//
-//			SimpleDateFormat dayTime = new SimpleDateFormat("yyyyMMddHHmmss");
-//			String strTime = dayTime.format(new Date(timeNum));
-//
-//			// 랜덤 숫자 4개 생성
-//			String rNum = "";
-//			for (int i = 1; i <= 4; i++) {
-//				rNum += (int) (Math.random() * 10);
-//			}
-//
-//			// 주문번호 설정
-//			String ordNo = strTime + "_" + rNum;
-//			ordVo.setOrdNo(ordNo);		
-//			
-//			ordVo.setOrdQty(quantity);
-//
-//			// 주문 정보 저장
-//			cartService.insertOrderInfo2(ordVo);
-//
-//			// 주문 완료 페이지에서 사용할 Date 타입 설정
-//			SimpleDateFormat dayTime2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//			String strTime2 = dayTime2.format(new Date(timeNum));
-//
-//			// 모델에 추가
-//			model.addAttribute("ordNo", ordNo);
-//			model.addAttribute("ordDate", strTime2);
-//
-//			return "myPage/orderCompleteView";
-//	  }
-	
 	// 주문 내역 보기 
-	@RequestMapping("/myPage/orderList")
+	@GetMapping("/myPage/orderList")
 	public String orderList(String period, Model model, HttpSession session) {
 		// 회원에 해당하는 orderList 출력
 		String memId = (String) session.getAttribute("sid");
@@ -255,7 +216,7 @@ public class CartController {
 	    return "myPage/orderListView"; 		
 	}
 	
-	@RequestMapping("/myPage/cartDelete")
+	@DeleteMapping("/myPage/cartDelete")
 	@ResponseBody  
 	public String deleteCartItem(@RequestParam("cartNo") int cartNo, HttpSession session) {	    
 	    String result = "fail";
