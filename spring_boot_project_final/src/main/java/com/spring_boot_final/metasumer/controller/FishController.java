@@ -2,14 +2,15 @@ package com.spring_boot_final.metasumer.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring_boot_final.metasumer.model.FishVO;
 import com.spring_boot_final.metasumer.service.FishService;
@@ -65,12 +66,21 @@ public class FishController {
 		return "fishInfo/fishDetailView";
 	}
 	
-	// 어종 검색
+	// 어종 검색 API	
 	@GetMapping("/fish/fishSearch")
-	@ResponseBody
-	public ArrayList<FishVO> fishSearch(@RequestParam HashMap<String, Object> param) {
-		ArrayList<FishVO> fishList = fishService.fishSearch(param);	
-		return fishList;
-	}
+	public ResponseEntity<List<FishVO>> fishSearch(@RequestParam("keyword") String keyword) {
+        // HashMap에 keyword 저장
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("keyword", keyword);
+        
+        ArrayList<FishVO> fishList = fishService.fishSearch(map);
+        
+        // 검색 결과 없을 때
+        if (fishList.isEmpty()) { 
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.ok(fishList);
+        }
+    }
 
 }

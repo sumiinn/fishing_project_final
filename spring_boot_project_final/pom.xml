@@ -178,6 +178,12 @@
 			<type>maven-plugin</type>
 		</dependency>
 		
+		<!-- ElasticSearch 추가 -->
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+        </dependency>
+        
 	</dependencies>
 
 	<build>
