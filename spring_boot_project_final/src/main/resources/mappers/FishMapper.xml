@@ -43,11 +43,7 @@
   	
   	<!-- 어종 검색 -->
   	<select id="fishSearch" parameterType="hashmap" resultMap="fishResult">
-  	    SELECT * FROM fish_info WHERE
-  	       <choose>
-  				<when test="type != null and type.equals('fishName')">
-  					fishName LIKE CONCAT('%', #{keyword}, '%')
-  				</when>  				
-  			</choose>
+  	    SELECT * FROM fish_info
+  	    WHERE MATCH(fishName) AGAINST(#{keyword} IN NATURAL LANGUAGE MODE) 	       
   	</select>
   </mapper>

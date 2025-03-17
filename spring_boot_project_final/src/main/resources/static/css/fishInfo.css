@@ -76,6 +76,13 @@ section{
     cursor: pointer;
 }
 
+#wrap .fishDataWrapper {
+    display: flex;               
+    flex-wrap: wrap;              
+    gap: 20px;                    
+    justify-content: flex-start; 
+}
+
 #fishDetail img{
 	width: 33.3%;
 }

@@ -40,18 +40,15 @@ $(function(){
         event.preventDefault();
         
         let searchText = $('.searchText').val();
-        //let formData = $(this).serialize();
-        //let keyword = $('.searchText').val();
-        //let type = $('#type').val();
         
         $.ajax({
             type:'get',
             url:'/fish/fishSearch',
             data:{ 
-                "keyword":searchText, 
-                "type":'fishName'
+                "keyword":searchText
             },
-            success:function(result) {                           
+            success:function(result) { 
+            	//console.log(result);
                 updateFishList(result);                                                      
             },
             error:function() {
@@ -66,13 +63,15 @@ $(function(){
         
         let pagination = $('.pagination');
 
-        if(fishList == ""){
+        if(fishList == undefined || !Array.isArray(fishList)){
             fishBox.append('<p id="emptyFishMsg">일치하는 항목이 없습니다.</p>');
             pagination.hide();
         }else{
+        	let fishInfoHtml = '<div class="fishDataWrapper">';
+        	
             fishList.forEach(function(fish) {
-                let fishInfo = `
-                    <div id="fish" data-category="${fish.fishCtgId}">
+                fishInfoHtml += `
+                    <div class="fishData" data-category="${fish.fishCtgId}">
                         <div id="fishDetail">
                             <div>
                                 <a href="/fish/detailViewFish/${fish.fishNo}">
@@ -82,9 +81,12 @@ $(function(){
                             <p id="fishName">${fish.fishName}</p>
                         </div>
                     </div>`;
-                pagination.hide();
-                fishBox.append(fishInfo); // 정보 넣어주기
+                        
             });
+            
+            fishInfoHtml += '</div>';
+            fishBox.append(fishInfoHtml);
+            pagination.hide();      
         }
     }
     
