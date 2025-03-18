@@ -1,6 +1,6 @@
 # project-final-metasumer
 
-# 1. 프로젝트 소개
+# 📌 프로젝트 소개
   - 프로젝트명 : 어사모(물고기를 사랑하는 모임)
   - 팀명 : 메타슈머(metasumer)
 
