@@ -43,7 +43,7 @@
 
 ## 📹 시연 영상
   
-[![Video Label](https://img.youtube.com/vi/'w0A9_2jcWUs'/0.jpg)](https://youtu.be/w0A9_2jcWUs)
+[![낚시 커뮤니티 웹사이트 시연영상(어사모)](https://img.youtube.com/vi/w0A9_2jcWUs/0.jpg)](https://youtu.be/w0A9_2jcWUs)
 
 ## 🙋‍♀️ 팀원
   - 이준기 : https://github.com/basislee
