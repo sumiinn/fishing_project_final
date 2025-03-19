@@ -24,23 +24,52 @@
    - 버전 관리 : Git (GitHub 활용)
    
 ## 🏗 시스템 아키텍처
-     
-## 프로젝트 주요 기능
-  - 낚시에 관심 있는 사람들이 필요한 정보를 찾습니다
-  - 낚시인 커뮤니티를 형성해 함께 경험과 정보를 공유하는 상호 작용을 유도합니다
-  - 구매 장터 및 낚시터/선박 예약 등의 서비스를 제공하여 사업자와 사용자를 연결합니다
-  - Naver AI API를 사용하여 사용자 업로드 이미지 인식, 챗봇, 리뷰 분석, 추천, 번역 등의 기능을 제공합니다
-  - Geolocation API를 사용하여 사용자 위치 및 관련 정보를 제공합니다
-  - 기타 API를 사용하여 어종/날씨/해안가 등 정보를 제공합니다
-  - 낚시/어종/위치/날씨/안전 정보 등 낚시 전반에 대한 상세 설명 제공
-  - 개인 회원의 물고기 기록 업로드 : 낚시갤러리 / 이를 통한 이벤트 개최
-  - 사업자 회원의 사업체(낚시터, 낚시용품) 관리
-  - 관리자 회원의 회원/게시물 관리
+
+## 📊 ERD 설계
+![ERD_어사모](https://github.com/user-attachments/assets/e69df066-b155-45d6-8ed7-e01b0a4b9661)
 
 ## 📋 담당 주요 기능
+  ### [상품 구매 기능]
+  <details>
+  <summary>장바구니</summary> 
+    
+  접은 내용(ex 소스 코드)
+  </details>
+
+  <details>
+  <summary>결제</summary> 
+    
+  접은 내용(ex 소스 코드)
+  </details>
+
+  ### [마이페이지]
+  <details>
+  <summary>나의 낚시 기록</summary> 
+    
+  접은 내용(ex 소스 코드)
+  </details>
+
+  <details>
+  <summary>회원 정보 관리</summary> 
+    
+  접은 내용(ex 소스 코드)
+  </details>
+
+  ### [어종 정보]
+  <details>
+  <summary>어종 검색</summary> 
+    
+  접은 내용(ex 소스 코드)
+  </details>
+
+  <details>
+  <summary>어종별 상세페이지</summary> 
+    
+  접은 내용(ex 소스 코드)
+  </details>
+
+  ### [낚시 정보]
   
-
-
 ## 📹 시연 영상
   
 [![낚시 커뮤니티 웹사이트 시연영상(어사모)](https://img.youtube.com/vi/w0A9_2jcWUs/0.jpg)](https://youtu.be/w0A9_2jcWUs)
