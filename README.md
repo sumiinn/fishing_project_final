@@ -33,7 +33,7 @@
  
   #### 🗂 구조 다이어그램
   <details>
-  <summary>📌 구조 살펴보기 (클릭)</summary> 
+  <summary>📌 구조 살펴보기</summary> 
     
   ![코드 구조 drawio](https://github.com/user-attachments/assets/6b08efa7-2c13-424e-b0e5-789016484200)
 
@@ -46,23 +46,74 @@
 
   #### 🛠 기능 상세
   <details>
-  <summary>장바구니</summary> 
+  <summary>장바구니</summary><br> 
 
-    
-  접은 내용(ex 소스 코드)
+  [기능 설명]
+  - 로그인한 사용자가 상품을 장바구니에 담고 수량을 변경하거나 삭제할 수 있습니다.
+  - 동일한 상품이 담길 경우 중복을 체크하여 수량 증가됩니다.
+  - `@ResponseBody`와 Ajax 비동기 처리를 적용하여 새로고침 없이 변경사항을 확인할 수 있습니다.
+
+  [주요 코드]
+  ```java
+  // 장바구니에 상품 추가 
+@PostMapping("/myPage/insertCart")
+  @ResponseBody
+  ```
   </details>
 
   <details>
-  <summary>주문</summary> 
-    
-  접은 내용(ex 소스 코드)
+  <summary>주문</summary><br>
+
+  [기능 설명]
+  
+  - 장바구니에서 선택한 상품만 주문서로 전달 후 주문이 진행됩니다.
+  - 현재 시간 + 랜덤 숫자로 주문번호를 생성해 주문 테이블과 주문 상세 테이블에 저장됩니다.
+  - 주문 완료 후, 주문 내역 조회 시 기간별 필터링(3개월, 6개월, 1년)이 가능합니다.
+
+  [주요 코드]
+  ```java
+  // 주문 번호 생성 및 주문 정보 저장
+@RequestMapping("/myPage/orderComplete")
+	public String orderComplete(OrderInfoVO ordInfoVo, @RequestParam String hp1, 
+			                    @RequestParam String hp2, @RequestParam String hp3, 
+			                    @RequestParam(value = "cartNos") ArrayList<Integer> cartNos, Model model) {
+		// 전화번호
+		String hp = hp1 + "-" + hp2 + "-" + hp3;
+		ordInfoVo.setOrdRcvPhone(hp);
+
+		// 주문번호
+		long timeNum = System.currentTimeMillis();
+		SimpleDateFormat dayTime = new SimpleDateFormat("yyyyMMddHHmmss");
+		String strTime = dayTime.format(new Date(timeNum));
+
+		// 랜덤 숫자 4개 생성
+		String rNum = "";
+		for (int i = 1; i <= 4; i++) {
+			rNum += (int) (Math.random() * 10);
+		}
+
+		// 주문번호 설정
+		String ordNo = strTime + "_" + rNum;
+		ordInfoVo.setOrdNo(ordNo);
+		
+		// 선택된 장바구니 아이템 설정
+          ordInfoVo.setCartNos(cartNos);          
+          // 주문 정보 저장
+          cartService.insertOrderInfo(ordInfoVo);             
+
+		// 모델에 추가
+		model.addAttribute("ordNo", ordNo);
+
+		return "myPage/orderCompleteView";
+	}
+```
   </details>
 
   ### ✅ 마이페이지
 
   #### 🗂 구조 다이어그램
   <details>
-  <summary>📌 구조 살펴보기 (클릭)</summary> 
+  <summary>📌 구조 살펴보기</summary> 
     
   ![코드 구조 drawio](https://github.com/user-attachments/assets/6b08efa7-2c13-424e-b0e5-789016484200)
   </details>
