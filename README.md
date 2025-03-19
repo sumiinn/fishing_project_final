@@ -30,7 +30,8 @@
 
 ## 📋 담당 주요 기능
   ### ✅ 상품 구매 기능
- 
+ <img src="https://github.com/user-attachments/assets/01890673-e864-4ce8-96e0-54534600c09a" width="500"> <img src="https://github.com/user-attachments/assets/01890673-e864-4ce8-96e0-54534600c09a" width="400">
+
   #### 🗂 구조 다이어그램
   <details>
   <summary>📌 구조 살펴보기</summary> 
@@ -159,7 +160,7 @@ for (MyPageVO record : mfList) {
   </details>
 
   <details>
-  <summary>나의 낚시 성공률(재미 요소)</summary><br> 
+  <summary>나의 낚시 성공률 (재미 요소)</summary><br> 
     
   [기능 설명]
 
@@ -193,9 +194,42 @@ public double calculateSuccessRate(@RequestParam("fishName") String fishName,
   </details>
 
   <details>
-  <summary>회원 정보 관리</summary> 
+  <summary>내 정보 관리</summary><br>
     
-  접은 내용(ex 소스 코드)
+  [기능 설명]
+
+  - 로그인한 회원의 개인정보를 조회하고 수정할 수 있습니다.
+  - 수정 전 비밀번호 확인 절차를 거쳐 보안을 강화했습니다.
+  - 전화번호 등 개인정보 수정 시, 입력값을 분리하여 관리합니다.
+  - 회원 정보 수정 시 `@ResponseBody`와 Ajax 비동기 처리로 서버와 통신합니다.
+
+  [주요 코드]
+  ```java
+// 비밀번호 확인
+@PostMapping("/myPage/checkPwd")
+@ResponseBody
+public String loginCheck(@RequestParam HashMap<String, Object> param,
+                         HttpSession session) {
+    String result = myPageService.passwordCheck(param);
+    return result;
+}
+
+// 회원정보 수정
+@PostMapping("/myPage/updateComplete")
+@ResponseBody
+public String updateComplete(@RequestParam HashMap<String, Object> param,
+                             HttpSession session) {
+    String memId = (String) session.getAttribute("sid");
+    param.put("memId", memId);
+
+    String result = "fail";
+    boolean updateSuccess = myPageService.updateMemberInfo(param);
+    if (updateSuccess) {
+        result = "success";
+    }
+    return result;
+}
+```
   </details>
 
   <details>
