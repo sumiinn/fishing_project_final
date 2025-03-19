@@ -29,20 +29,45 @@
 ![ERD_어사모](https://github.com/user-attachments/assets/e69df066-b155-45d6-8ed7-e01b0a4b9661)
 
 ## 📋 담당 주요 기능
-  ### [상품 구매 기능]
+  ### ✅ 상품 구매 기능
+ 
+  #### 🗂 구조 다이어그램
+  <details>
+  <summary>📌 구조 살펴보기 (클릭)</summary> 
+    
+  ![코드 구조 drawio](https://github.com/user-attachments/assets/6b08efa7-2c13-424e-b0e5-789016484200)
+
+  - [CartController](https://github.com/fullstack-final-project/project-final-metasumer/blob/develop/spring_boot_project_final/src/main/java/com/spring_boot_final/metasumer/controller/CartController.java)
+  - CartService<br>
+    : [CartService](https://github.com/fullstack-final-project/project-final-metasumer/blob/develop/spring_boot_project_final/src/main/java/com/spring_boot_final/metasumer/service/CartService.java) implements [ICartService](https://github.com/fullstack-final-project/project-final-metasumer/blob/develop/spring_boot_project_final/src/main/java/com/spring_boot_final/metasumer/service/ICartService.java)
+  - [ICartDAO](https://github.com/fullstack-final-project/project-final-metasumer/blob/develop/spring_boot_project_final/src/main/java/com/spring_boot_final/metasumer/dao/ICartDAO.java)
+  - [CartMapper](https://github.com/fullstack-final-project/project-final-metasumer/blob/develop/spring_boot_project_final/src/main/resources/mappers/CartMapper.xml)
+  </details>
+
+  #### 🛠 기능 상세
   <details>
   <summary>장바구니</summary> 
+
     
   접은 내용(ex 소스 코드)
   </details>
 
   <details>
-  <summary>결제</summary> 
+  <summary>주문</summary> 
     
   접은 내용(ex 소스 코드)
   </details>
 
-  ### [마이페이지]
+  ### ✅ 마이페이지
+
+  #### 🗂 구조 다이어그램
+  <details>
+  <summary>📌 구조 살펴보기 (클릭)</summary> 
+    
+  ![코드 구조 drawio](https://github.com/user-attachments/assets/6b08efa7-2c13-424e-b0e5-789016484200)
+  </details>
+
+  #### 🛠 기능 상세
   <details>
   <summary>나의 낚시 기록</summary> 
     
@@ -55,7 +80,16 @@
   접은 내용(ex 소스 코드)
   </details>
 
-  ### [어종 정보]
+  ### ✅ 어종 정보
+
+  #### 🗂 구조 다이어그램
+  <details>
+  <summary>📌 구조 살펴보기 (클릭)</summary> 
+    
+  ![코드 구조 drawio](https://github.com/user-attachments/assets/6b08efa7-2c13-424e-b0e5-789016484200)
+  </details>
+
+  #### 🛠 기능 상세
   <details>
   <summary>어종 검색</summary> 
     
@@ -68,7 +102,16 @@
   접은 내용(ex 소스 코드)
   </details>
 
-  ### [낚시 정보]
+  ### ✅ 낚시 정보
+
+  #### 🗂 구조 다이어그램
+  <details>
+  <summary>📌 구조 살펴보기 (클릭)</summary> 
+    
+  ![코드 구조 drawio](https://github.com/user-attachments/assets/6b08efa7-2c13-424e-b0e5-789016484200)
+  </details>
+
+  #### 🛠 기능 상세
   
 ## 📹 시연 영상
   
