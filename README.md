@@ -45,7 +45,7 @@
   - [CartMapper](https://github.com/fullstack-final-project/project-final-metasumer/blob/develop/spring_boot_project_final/src/main/resources/mappers/CartMapper.xml)
   </details>
 
-  #### 🛠 주요 기능 상세
+  #### 🛠 기능 상세
   <details>
   <summary>장바구니</summary><br> 
 
@@ -119,7 +119,7 @@
   ![코드 구조 drawio](https://github.com/user-attachments/assets/6b08efa7-2c13-424e-b0e5-789016484200)
   </details>
 
-  #### 🛠 주요 기능 상세
+  #### 🛠 기능 상세
   <details>
   <summary>나의 물고기 기록 조회</summary><br>
     
@@ -282,34 +282,74 @@ public String updateComplete(@RequestParam HashMap<String, Object> param,
 
   #### 🗂 구조 다이어그램
   <details>
-  <summary>📌 구조 살펴보기 (클릭)</summary> 
+  <summary>📌 구조 살펴보기</summary> 
     
   ![코드 구조 drawio](https://github.com/user-attachments/assets/6b08efa7-2c13-424e-b0e5-789016484200)
   </details>
 
   #### 🛠 기능 상세
   <details>
-  <summary>어종 검색</summary> 
+  <summary>어종 검색</summary><br> 
     
-  접은 내용(ex 소스 코드)
+  [기능 설명]
+
+  - 사용자가 검색어를 입력하면, 해당 키워드가 포함된 어종 목록을 조회할 수 있습니다.
+
+  [주요 코드]
+  ```java
+@GetMapping("/fish/fishSearch")
+public ResponseEntity<List<FishVO>> fishSearch(@RequestParam("keyword") String keyword) {
+    // HashMap에 keyword추가
+    HashMap<String, Object> map = new HashMap<>();
+    map.put("keyword", keyword);
+
+    ArrayList<FishVO> fishList = fishService.fishSearch(map);
+
+    if (fishList.isEmpty()) { // 검색 결과 없을 
+        return ResponseEntity.noContent().build();
+    } else {
+        return ResponseEntity.ok(fishList);
+    }
+}
+```
   </details>
 
   <details>
-  <summary>어종별 상세페이지</summary> 
+  <summary>어종별 상세페이지</summary><br> 
     
-  접은 내용(ex 소스 코드)
+  [기능 설명]
+
+  -사용자가 원하는 어종을 선택하면, 해당 어종의 상세 정보를 확인할 수 있습니다.
+  - 어종의 이름, 크기, 특징 등의 상세 정보를 페이지에서 확인할 수 있습니다.
+
+  [주요 코드]
+  ```java
+@GetMapping("/fish/detailViewFish/{fishNo}")
+public String detailViewFish(@PathVariable("fishNo") String fishNo, Model model) {
+    FishVO fish = fishService.detailViewFish(fishNo);
+    model.addAttribute("fish", fish);
+    return "fishInfo/fishDetailView";
+}
+```
   </details>
 
   ### ✅ 낚시 정보
 
   #### 🗂 구조 다이어그램
   <details>
-  <summary>📌 구조 살펴보기 (클릭)</summary> 
+  <summary>📌 구조 살펴보기</summary> 
     
   ![코드 구조 drawio](https://github.com/user-attachments/assets/6b08efa7-2c13-424e-b0e5-789016484200)
   </details>
 
   #### 🛠 기능 상세
+  <details>
+  <summary>낚시 가이드/팁 확인</summary><br> 
+
+  [기능 설명]
+  - 사용자는 카테고리와 세부 카테고리를 선택해 초보자 가이드, 낚시 노하우, 장비 사용법 등 다양한 낚시 정보를 확인할 수 있습니다.
+  - 선택한 세부 카테고리에 맞춰 관련 상품을 랜덤으로 추천해줍니다.
+  </details>
   
 ## 📹 시연 영상
   
