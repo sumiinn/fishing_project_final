@@ -36,7 +36,7 @@
   <details>
   <summary>📌 구조 살펴보기</summary> 
     
-  ![코드 구조 drawio](https://github.com/user-attachments/assets/6b08efa7-2c13-424e-b0e5-789016484200)
+  ![코드 구조 drawio (1)](https://github.com/user-attachments/assets/b588400c-05ce-4308-b216-178d498e6e8f)
 
   - [CartController](https://github.com/fullstack-final-project/project-final-metasumer/blob/develop/spring_boot_project_final/src/main/java/com/spring_boot_final/metasumer/controller/CartController.java)
   - CartService<br>
@@ -116,7 +116,7 @@
   <details>
   <summary>📌 구조 살펴보기</summary> 
     
-  ![코드 구조 drawio](https://github.com/user-attachments/assets/6b08efa7-2c13-424e-b0e5-789016484200)
+  ![코드 구조 drawio (2)](https://github.com/user-attachments/assets/ded33a36-c723-4da2-a2ef-6e7a0b999aa7)
   </details>
 
   #### 🛠 기능 상세
