@@ -50,7 +50,7 @@
   <summary>장바구니</summary><br> 
 
   [기능 설명]
-  - 로그인한 사용자가 상품을 장바구니에 담고 수량을 변경하거나 삭제할 수 있습니다.
+  - 로그인한 회원이이 상품을 장바구니에 담고 수량을 변경하거나 삭제할 수 있습니다.
   - 동일한 상품이 담길 경우 중복을 체크하여 수량이 증가됩니다.
   - `@ResponseBody`와 Ajax 비동기 처리를 적용하여 새로고침 없이 변경사항을 확인할 수 있습니다.
 
@@ -233,9 +233,49 @@ public String updateComplete(@RequestParam HashMap<String, Object> param,
   </details>
 
   <details>
-  <summary>구매/예약 내역 확인</summary> 
+  <summary>구매/예약 내역 확인</summary><br>	
     
-  접은 내용(ex 소스 코드)
+  [기능 설명]
+
+  - 로그인한 회원의 구매/예약 내역을 조회합니다.
+  - `period` 파라미터와 `LocalDate` 계산을 활용해 기간별(3개월, 6개월, 1년, 3년) 구매/예약 내역을 필터링합니다.
+
+  [주요 코드]
+  ```java
+@GetMapping("/myPage/reservation")
+	public String reservation(String period, Model model, HttpSession session) {	
+        String memId = (String)session.getAttribute("sid");	   
+        
+        LocalDate now = LocalDate.now();
+	    String startDate = null;
+	    String endDate = now.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+
+	    if (period != null) {
+	        switch (period) {
+	            case "3m":
+	                startDate = now.minusMonths(3).format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+	                break;
+	            case "6m":
+	                startDate = now.minusMonths(6).format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+	                endDate = now.minusMonths(3).minusDays(1).format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+	                break;
+	            case "1y":
+	                startDate = now.minusYears(1).format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+	                endDate = now.minusMonths(6).minusDays(1).format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+	                break;
+	            case "3y":
+	                startDate = now.minusYears(3).format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+	                endDate = now.minusYears(1).minusDays(1).format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+	                break;
+	        }
+	    }
+
+	    ArrayList<ReservationListVO> reservationList = myPageService.reservationList(memId, startDate, endDate);
+	    model.addAttribute("reservationList", reservationList);
+		
+	    return "myPage/reservationListView";
+	}
+```
   </details>
 
   ### ✅ 어종 정보
