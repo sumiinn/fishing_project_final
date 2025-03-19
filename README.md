@@ -44,13 +44,13 @@
   - [CartMapper](https://github.com/fullstack-final-project/project-final-metasumer/blob/develop/spring_boot_project_final/src/main/resources/mappers/CartMapper.xml)
   </details>
 
-  #### 🛠 기능 상세
+  #### 🛠 주요 기능 상세
   <details>
   <summary>장바구니</summary><br> 
 
   [기능 설명]
   - 로그인한 사용자가 상품을 장바구니에 담고 수량을 변경하거나 삭제할 수 있습니다.
-  - 동일한 상품이 담길 경우 중복을 체크하여 수량 증가됩니다.
+  - 동일한 상품이 담길 경우 중복을 체크하여 수량이 증가됩니다.
   - `@ResponseBody`와 Ajax 비동기 처리를 적용하여 새로고침 없이 변경사항을 확인할 수 있습니다.
 
   [주요 코드]
@@ -68,7 +68,7 @@
   
   - 장바구니에서 선택한 상품만 주문서로 전달 후 주문이 진행됩니다.
   - 현재 시간 + 랜덤 숫자로 주문번호를 생성해 주문 테이블과 주문 상세 테이블에 저장됩니다.
-  - 주문 완료 후, 주문 내역 조회 시 기간별 필터링(3개월, 6개월, 1년)이 가능합니다.
+  - 주문 완료 후, 주문 내역은 기간별(3개월, 6개월, 1년)로 조회할 수 있습니다.
 
   [주요 코드]
   ```java
@@ -118,15 +118,88 @@
   ![코드 구조 drawio](https://github.com/user-attachments/assets/6b08efa7-2c13-424e-b0e5-789016484200)
   </details>
 
-  #### 🛠 기능 상세
+  #### 🛠 주요 기능 상세
   <details>
-  <summary>나의 낚시 기록</summary> 
+  <summary>나의 물고기 기록 조회</summary><br>
+    
+  [기능 설명]
+
+  - 페이징 처리로 최근 기록을 확인할 수 있습니다.
+  - 최근 10개의 물고기 기록을 크기 데이터로 가공하여 차트로 시각화합니다.
+  - 월별 낚시 기록을 카운팅하고, 월간 총합 데이터를 차트로 제공합니다.
+
+  [주요 코드]
+  ```java
+  ArrayList<MyPageVO> mfList = myPageService.MyFishRecordsList(memId);
+
+// 월별 count 배열 생성
+int[] monthFishCnt = new int[12];
+SimpleDateFormat monthFormat = new SimpleDateFormat("MM");
+
+for (MyPageVO record : mfList) {
+    Date createdDate = record.getCreatedDate();
+    int month = Integer.parseInt(monthFormat.format(createdDate)) - 1;
+    monthFishCnt[month]++;
+}
+
+// 최근 10개 기록만 추출
+if (mfList.size() > 10) {
+    mfList = new ArrayList<>(mfList.subList(0, 10)); 
+}
+
+ArrayList<String> fishNames = new ArrayList<>();
+ArrayList<Double> fishSizes = new ArrayList<>();
+
+for (MyPageVO record : mfList) {
+    fishNames.add(record.getFishName());
+    String sizeStr = record.getFishSize().replace("cm", "").trim();
+    fishSizes.add(Double.parseDouble(sizeStr));
+}
+```
+  </details>
+
+  <details>
+  <summary>나의 낚시 성공률(재미 요소)</summary><br> 
+    
+  [기능 설명]
+
+  - 물고기 종류와 조황 요소(물때, 위치, 날씨, 오늘의 운세 등)를 입력하면 낚시 성공률을 계산해주는 기능입니다.
+  - 실제 확률 계산 알고리즘이 아닌, 단순 점수 계산을 통해 게임성 재미 요소로 구현했습니다.
+
+  [주요 코드]
+  ```java
+@PostMapping("/myPage/successCalc")
+@ResponseBody
+public double calculateSuccessRate(@RequestParam("fishName") String fishName,
+                                   @RequestParam("tide") String tide,
+                                   @RequestParam("location") String location,
+                                   @RequestParam("weather") String weather,
+                                   @RequestParam("skill") String skill,
+                                   @RequestParam("fortune") String fortune) {
+
+    String fishNo = myPageService.getFishNoByName(fishName);
+
+    int totalScore = myPageService.getTideScore(fishNo, tide)
+                   + myPageService.getLocationScore(fishNo, location)
+                   + myPageService.getWeatherScore(fishNo, weather)
+                   + myPageService.getSkillScore(skill)
+                   + myPageService.getFortuneScore(fortune);
+
+    int successRate = (int) ((totalScore / 25.0) * 100);
+
+    return successRate;
+}
+```
+  </details>
+
+  <details>
+  <summary>회원 정보 관리</summary> 
     
   접은 내용(ex 소스 코드)
   </details>
 
   <details>
-  <summary>회원 정보 관리</summary> 
+  <summary>구매/예약 내역 확인</summary> 
     
   접은 내용(ex 소스 코드)
   </details>
