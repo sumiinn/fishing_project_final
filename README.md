@@ -31,8 +31,8 @@
 
 ## 📋 담당 주요 기능
   ### ✅ 상품 구매 기능
- <img src="https://github.com/user-attachments/assets/08505cb8-72a7-45fe-a32a-9eb24e613d0c" width="400" height="250">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <img src="https://github.com/user-attachments/assets/2d293bf1-725e-4782-a738-c0a8709359e1" width="400"  height="250">
+ <img src="https://github.com/user-attachments/assets/08505cb8-72a7-45fe-a32a-9eb24e613d0c" width="350" height="200">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <img src="https://github.com/user-attachments/assets/2d293bf1-725e-4782-a738-c0a8709359e1" width="350"  height="200">
 
 
   #### 🗂 구조 다이어그램
