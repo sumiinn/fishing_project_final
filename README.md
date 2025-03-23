@@ -24,13 +24,16 @@
    - 버전 관리 : Git (GitHub 활용)
    
 ## 🏗 시스템 아키텍처
+![image](https://github.com/user-attachments/assets/4a08da54-6b7d-4e20-a299-d472b1c1a55a)
 
 ## 📊 ERD 설계
 ![ERD_어사모](https://github.com/user-attachments/assets/e69df066-b155-45d6-8ed7-e01b0a4b9661)
 
 ## 📋 담당 주요 기능
   ### ✅ 상품 구매 기능
- <img src="https://github.com/user-attachments/assets/01890673-e864-4ce8-96e0-54534600c09a" width="500"> <img src="https://github.com/user-attachments/assets/01890673-e864-4ce8-96e0-54534600c09a" width="400">
+ <img src="https://github.com/user-attachments/assets/08505cb8-72a7-45fe-a32a-9eb24e613d0c" width="450" height="300">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <img src="https://github.com/user-attachments/assets/2d293bf1-725e-4782-a738-c0a8709359e1" width="450"  height="300">
+
 
   #### 🗂 구조 다이어그램
   <details>
@@ -111,7 +114,8 @@
   </details>
 
   ### ✅ 마이페이지
-
+  <img src="https://github.com/user-attachments/assets/38f83c0a-bf17-4db4-8225-ea62c1a7945e" width="480" height="300">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://github.com/user-attachments/assets/e8a1f8e3-e8bb-4e9a-9862-d64fbe7e157c" width="400"  height="300">
   #### 🗂 구조 다이어그램
   <details>
   <summary>📌 구조 살펴보기</summary> 
@@ -279,7 +283,8 @@ public String updateComplete(@RequestParam HashMap<String, Object> param,
   </details>
 
   ### ✅ 어종 정보
-
+  <img src="https://github.com/user-attachments/assets/327738e4-4e13-4f13-b2c0-6553d1aac0e3" width="440" height="300">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://github.com/user-attachments/assets/28609ffa-043e-48e1-bd4c-f94b32ba5258" width="440"  height="300">
   #### 🗂 구조 다이어그램
   <details>
   <summary>📌 구조 살펴보기</summary> 
@@ -334,7 +339,8 @@ public String detailViewFish(@PathVariable("fishNo") String fishNo, Model model)
   </details>
 
   ### ✅ 낚시 정보
-
+  <img src="https://github.com/user-attachments/assets/a4c647cb-eae9-4a12-8003-825f09e17c54" width="450" height="300">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://github.com/user-attachments/assets/1b5127f8-a482-48c0-a0dc-eaf5db93c020" width="450"  height="300">
   #### 🗂 구조 다이어그램
   <details>
   <summary>📌 구조 살펴보기</summary> 
