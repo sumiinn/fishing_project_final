@@ -114,8 +114,8 @@
   </details>
 
   ### ✅ 마이페이지
-  <img src="https://github.com/user-attachments/assets/38f83c0a-bf17-4db4-8225-ea62c1a7945e" width="480" height="300">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://github.com/user-attachments/assets/e8a1f8e3-e8bb-4e9a-9862-d64fbe7e157c" width="400"  height="300">
+  <img src="https://github.com/user-attachments/assets/38f83c0a-bf17-4db4-8225-ea62c1a7945e" width="400" height="250">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://github.com/user-attachments/assets/e8a1f8e3-e8bb-4e9a-9862-d64fbe7e157c" width="350"  height="250">
   #### 🗂 구조 다이어그램
   <details>
   <summary>📌 구조 살펴보기</summary> 
@@ -283,8 +283,8 @@ public String updateComplete(@RequestParam HashMap<String, Object> param,
   </details>
 
   ### ✅ 어종 정보
-  <img src="https://github.com/user-attachments/assets/327738e4-4e13-4f13-b2c0-6553d1aac0e3" width="440" height="300">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://github.com/user-attachments/assets/28609ffa-043e-48e1-bd4c-f94b32ba5258" width="440"  height="300">
+  <img src="https://github.com/user-attachments/assets/327738e4-4e13-4f13-b2c0-6553d1aac0e3" width="380" height="250">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://github.com/user-attachments/assets/28609ffa-043e-48e1-bd4c-f94b32ba5258" width="380"  height="250">
   #### 🗂 구조 다이어그램
   <details>
   <summary>📌 구조 살펴보기</summary> 
@@ -339,8 +339,8 @@ public String detailViewFish(@PathVariable("fishNo") String fishNo, Model model)
   </details>
 
   ### ✅ 낚시 정보
-  <img src="https://github.com/user-attachments/assets/a4c647cb-eae9-4a12-8003-825f09e17c54" width="450" height="300">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://github.com/user-attachments/assets/1b5127f8-a482-48c0-a0dc-eaf5db93c020" width="450"  height="300">
+  <img src="https://github.com/user-attachments/assets/a4c647cb-eae9-4a12-8003-825f09e17c54" width="380" height="250">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://github.com/user-attachments/assets/1b5127f8-a482-48c0-a0dc-eaf5db93c020" width="380"  height="250">
   #### 🗂 구조 다이어그램
   <details>
   <summary>📌 구조 살펴보기</summary> 
