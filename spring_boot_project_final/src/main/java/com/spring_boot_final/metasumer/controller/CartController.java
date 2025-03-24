@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -52,9 +54,17 @@ public class CartController {
 	// 장바구니에 상품 추가	
 	@PostMapping("/myPage/insertCart")
 	@ResponseBody
-	public int insertCart(@RequestParam String prdNo, @RequestParam int cartQty, HttpSession session) {
+	public Map<String, Object> insertCart(@RequestParam String prdNo, @RequestParam int cartQty, HttpSession session) {
 		// 로그인 성공 시
 		String memId = (String) session.getAttribute("sid");
+		
+		Map<String, Object> response = new HashMap<>();
+	    
+	    if (memId == null) {
+	    	response.put("status", "fail");
+	        response.put("message", "로그인이 필요합니다.");
+	        return response;
+	    }
 		
 		CartVO vo = new CartVO();
 		
@@ -62,18 +72,19 @@ public class CartController {
 		vo.setPrdNo(prdNo);
 	    vo.setCartQty(cartQty);
 
-	    int result = 0;
 	    int count = cartService.checkPrdInCart(prdNo, memId);
 
 	    if (count == 0) {
 	        cartService.insertCart(vo);
-	        result = 1;
+	        response.put("status", "success");
+	        response.put("message", "장바구니에 추가되었습니다.");
 	    } else {
 	        cartService.updateQtyInCart(vo);
-	        result = 1;
+	        response.put("status", "success");
+	        response.put("message", "장바구니에 추가되었습니다.");
 	    }
 
-	    return result; 
+	    return response; 
 	}
 	
 	// 장바구니 수량 변경

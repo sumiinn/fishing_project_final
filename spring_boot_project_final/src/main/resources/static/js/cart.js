@@ -119,7 +119,7 @@
              dataType: 'text', 
              success: function(result) {
                  if (result == 1) {          
-                     location.href = "/myPage/cartList"; // 장바구니 페이지로 이동
+                     location.href = "/product/cartList"; // 장바구니 페이지로 이동
                  } else {
                      alert('장바구니 업데이트를 실패하였습니다.');
                  }
@@ -201,7 +201,7 @@
 			 	  success:function(result) {
 			 		  if(result == 1) {						 		      
 			 			  updateTotalAmount();
-			 			  location.href= "/myPage/cartList";
+			 			  location.href= "/product/cartList";
 			 		  }
 			 	  },
 			 	  error:function() {
@@ -227,7 +227,7 @@
                 success: function(result) {
                     if(result == "success") {                                              
                         updateTotalAmount();
-                        location.href= "/myPage/cartList";
+                        location.href= "/product/cartList";
                     } else {
                         alert("상품 삭제에 실패했습니다.");
                     }
