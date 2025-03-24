@@ -59,9 +59,41 @@
 
   [주요 코드]
   ```java
-  // 장바구니에 상품 추가 
-@PostMapping("/myPage/insertCart")
-  @ResponseBody
+  // 장바구니에 상품 추가	
+	@PostMapping("/myPage/insertCart")
+	@ResponseBody
+	public Map<String, Object> insertCart(@RequestParam String prdNo, @RequestParam int cartQty, HttpSession session) {
+	    // 로그인 성공 시
+	    String memId = (String) session.getAttribute("sid");
+		
+	    Map<String, Object> response = new HashMap<>();
+	    
+	    if (memId == null) {
+	    	  response.put("status", "fail");
+	        response.put("message", "로그인이 필요합니다.");
+	        return response;
+	    }
+		
+	    CartVO vo = new CartVO();
+		
+	    vo.setMemId(memId);
+	    vo.setPrdNo(prdNo);
+	    vo.setCartQty(cartQty);
+
+	    int count = cartService.checkPrdInCart(prdNo, memId);
+
+	    if (count == 0) {
+	        cartService.insertCart(vo);
+	        response.put("status", "success");
+	        response.put("message", "장바구니에 추가되었습니다.");
+	    } else {
+	        cartService.updateQtyInCart(vo);
+	        response.put("status", "success");
+	        response.put("message", "장바구니에 추가되었습니다.");
+	    }
+
+	    return response; 
+	}
   ```
   </details>
 
