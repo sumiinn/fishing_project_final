@@ -39,7 +39,7 @@
 					</c:if>
 					<a href="<c:url value='/dashboard'/>">예약</a>
 					<a href="<c:url value='/myFishRecords/myFishRecordsListView'/>">낚시갤러리</a>
-					<a href="<c:url value='/myPage/cartList'/>">장바구니</a>
+					<a href="<c:url value='/product/cartList'/>">장바구니</a>
 					<a href="<c:url value='/member/myPage'/>">마이페이지</a>
 					<a href="<c:url value='/member/userInterestTag'/>">낚시 취향</a>
 					<c:if test="${sessionScope.memType eq 'general'}">

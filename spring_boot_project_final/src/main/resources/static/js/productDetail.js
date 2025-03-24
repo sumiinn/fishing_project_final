@@ -86,7 +86,11 @@ function addToCart() {
             cartQty: quantity
         },
         success: function(response) {
-            alert("장바구니에 추가되었습니다.");
+        	if (response.status === "success") {
+                alert(response.message);
+            } else {
+                alert(response.message);
+            }
         },
         error: function() {
             alert("실패");
