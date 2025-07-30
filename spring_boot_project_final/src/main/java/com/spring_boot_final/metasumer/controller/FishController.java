@@ -1,7 +1,6 @@
 package com.spring_boot_final.metasumer.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +11,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.spring_boot_final.metasumer.model.FishDocument;
 import com.spring_boot_final.metasumer.model.FishVO;
+import com.spring_boot_final.metasumer.service.FishSearchService;
 import com.spring_boot_final.metasumer.service.FishService;
 
 @Controller
 public class FishController {
 	@Autowired
 	FishService fishService;
+	@Autowired
+	FishSearchService fishSearchService;
 	
 	@GetMapping("/fish")
 	public String fishInfo(@RequestParam(defaultValue="1") int page, Model model) {		
@@ -68,12 +71,8 @@ public class FishController {
 	
 	// 어종 검색 API	
 	@GetMapping("/fish/fishSearch")
-	public ResponseEntity<List<FishVO>> fishSearch(@RequestParam("keyword") String keyword) {
-        // HashMap에 keyword 저장
-        HashMap<String, Object> map = new HashMap<>();
-        map.put("keyword", keyword);
-        
-        ArrayList<FishVO> fishList = fishService.fishSearch(map);
+	public ResponseEntity<List<FishDocument>> fishSearch(@RequestParam("keyword") String keyword) {
+		List<FishDocument> fishList = fishSearchService.searchFish(keyword);
         
         // 검색 결과 없을 때
         if (fishList.isEmpty()) { 
