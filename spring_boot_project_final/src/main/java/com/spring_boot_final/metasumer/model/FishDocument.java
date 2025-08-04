@@ -2,12 +2,17 @@ package com.spring_boot_final.metasumer.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 @Document(indexName = "fishinfo")  // 색인 이름
 public class FishDocument {
 	@Id
 	private String fishNo;
+	
+	@Field(type = FieldType.Text)
     private String fishName;
+
     private String fishImg;
     private String fishCtgId;
     

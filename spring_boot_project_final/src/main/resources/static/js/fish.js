@@ -47,9 +47,18 @@ $(function(){
             data:{ 
                 "keyword":searchText
             },
-            success:function(result) { 
-            	//console.log(result);
-                updateFishList(result);                                                      
+            success:function(data) { 
+            	$('.suggestMsg').remove(); // 이전 문구 제거
+
+                const fishList = data.result || [];  // undefined일 경우 빈 배열
+                const suggestion = data.suggestion;
+
+                // 추천 문구 있을 때
+                if (suggestion && suggestion.length > 0) {
+                    $('.fishBox').before(`<p class="suggestMsg">혹시 <strong>"${suggestion[0]}"</strong> 를 찾으셨나요?</p>`);
+                }
+
+                updateFishList(fishList);                                                      
             },
             error:function() {
                 alert('실패');
