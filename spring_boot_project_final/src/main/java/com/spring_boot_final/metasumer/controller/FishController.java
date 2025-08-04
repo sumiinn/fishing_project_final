@@ -1,20 +1,23 @@
 package com.spring_boot_final.metasumer.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring_boot_final.metasumer.model.FishDocument;
 import com.spring_boot_final.metasumer.model.FishVO;
 import com.spring_boot_final.metasumer.service.FishSearchService;
 import com.spring_boot_final.metasumer.service.FishService;
+import com.spring_boot_final.metasumer.service.FishSuggestService;
 
 @Controller
 public class FishController {
@@ -22,6 +25,8 @@ public class FishController {
 	FishService fishService;
 	@Autowired
 	FishSearchService fishSearchService;
+	@Autowired
+	FishSuggestService fishSuggestService;
 	
 	@GetMapping("/fish")
 	public String fishInfo(@RequestParam(defaultValue="1") int page, Model model) {		
@@ -71,15 +76,26 @@ public class FishController {
 	
 	// 어종 검색 API	
 	@GetMapping("/fish/fishSearch")
-	public ResponseEntity<List<FishDocument>> fishSearch(@RequestParam("keyword") String keyword) {
-		List<FishDocument> fishList = fishSearchService.searchFish(keyword);
-        
-        // 검색 결과 없을 때
-        if (fishList.isEmpty()) { 
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.ok(fishList);
-        }
-    }
+	@ResponseBody
+	public Map<String, Object> fishSearch(@RequestParam("keyword") String keyword) {
+	    Map<String, Object> response = new HashMap<>();
+
+	    List<FishDocument> fishList = fishSearchService.searchFish(keyword);
+	    response.put("result", fishList);  // 검색 결과 리스트 넣기
+
+	    // 검색 결과가 없으면 오타 제안 추가
+	    if (fishList.isEmpty()) {
+	        List<String> suggestions = fishSuggestService.getSuggestions(keyword);
+	        if (!suggestions.isEmpty()) {
+	        	String suggestedWord = suggestions.get(0); // 첫 번째 추천어
+	            response.put("suggestion", List.of(suggestedWord));
+	            
+	            List<FishDocument> correctedResult = fishSearchService.searchFish(suggestedWord);
+	            response.put("result", correctedResult);
+	        }
+	    }
+
+	    return response;
+	}
 
 }
