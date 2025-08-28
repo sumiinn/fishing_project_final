@@ -55,7 +55,7 @@ $(function(){
 
                 // 추천 문구 있을 때
                 if (suggestion && suggestion.length > 0) {
-                    $('.fishBox').before(`<p class="suggestMsg">혹시 <strong>"${suggestion[0]}"</strong> 를 찾으셨나요?</p>`);
+                    $('.fishBox').before(`<p class="suggestMsg"><strong>"${suggestion[0]}"</strong>으로 검색한 결과입니다.</p>`);
                 }
 
                 updateFishList(fishList);                                                      
@@ -72,7 +72,7 @@ $(function(){
         
         let pagination = $('.pagination');
 
-        if(fishList == undefined || !Array.isArray(fishList)){
+        if(!fishList || fishList.length === 0){
             fishBox.append('<p id="emptyFishMsg">일치하는 항목이 없습니다.</p>');
             pagination.hide();
         }else{
