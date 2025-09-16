@@ -331,23 +331,33 @@ public String updateComplete(@RequestParam HashMap<String, Object> param,
   [기능 설명]
 
   - 사용자가 검색어를 입력하면, 해당 키워드가 포함된 어종 목록을 조회할 수 있습니다.
+  - 검색 결과가 없으면, 입력값과 가까운 단어를 퍼지 매치(fuzzy) 로 찾아 "OOO(으)로 검색한 결과입니다” 형태로 추천어를 함께 보여줍니다.
+  - 추천어가 있으면 해당 추천어로 자동 재검색합니다.
 
   [주요 코드]
   ```java
 @GetMapping("/fish/fishSearch")
-public ResponseEntity<List<FishVO>> fishSearch(@RequestParam("keyword") String keyword) {
-    // HashMap에 keyword추가
-    HashMap<String, Object> map = new HashMap<>();
-    map.put("keyword", keyword);
+	@ResponseBody
+	public Map<String, Object> fishSearch(@RequestParam("keyword") String keyword) {
+	    Map<String, Object> response = new HashMap<>();
 
-    ArrayList<FishVO> fishList = fishService.fishSearch(map);
+	    List<FishDocument> fishList = fishSearchService.searchFish(keyword);
+	    response.put("result", fishList);  // 검색 결과 리스트 넣기
 
-    if (fishList.isEmpty()) { // 검색 결과 없을 
-        return ResponseEntity.noContent().build();
-    } else {
-        return ResponseEntity.ok(fishList);
-    }
-}
+	    // 검색 결과가 없으면 오타 제안 추가
+	    if (fishList.isEmpty()) {
+	        List<String> suggestions = fishSuggestService.getSuggestions(keyword);
+	        if (!suggestions.isEmpty()) {
+	        	String suggestedWord = suggestions.get(0); // 첫 번째 추천어
+	            response.put("suggestion", List.of(suggestedWord));
+	            
+	            List<FishDocument> correctedResult = fishSearchService.searchFish(suggestedWord);
+	            response.put("result", correctedResult);
+	        }
+	    }
+
+	    return response;
+	}
 ```
   </details>
 
