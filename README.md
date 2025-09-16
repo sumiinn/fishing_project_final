@@ -321,7 +321,8 @@ public String updateComplete(@RequestParam HashMap<String, Object> param,
   <details>
   <summary>📌 구조 살펴보기</summary> 
     
-  ![코드 구조 drawio](https://github.com/user-attachments/assets/6b08efa7-2c13-424e-b0e5-789016484200)
+  ![코드 구조 drawio](https://github.com/user-attachments/assets/6cdc3634-1219-4e80-9a84-4a05659244b9)
+)
   </details>
 
   #### 🛠 기능 상세
